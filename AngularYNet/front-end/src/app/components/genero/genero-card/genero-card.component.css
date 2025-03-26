@@ -1,0 +1,26 @@
+.puntosSuspensivos{
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#carta {
+    background-color: white;
+}
+
+#carta:hover {
+    background-color: #0d6efd; 
+}
+
+#carta h5 { 
+    color: black;
+}
+
+#carta:hover h5 {
+    color: white;
+}

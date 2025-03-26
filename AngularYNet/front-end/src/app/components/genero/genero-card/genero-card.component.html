@@ -1,0 +1,15 @@
+<!--div id="carta" class="card mx-3 mb-4" style="width: 18rem;">
+    <a [routerLink]="['/genero', generoId?.id]">
+        <div class="card-body">
+            <h5 class="card-title text-center m-0 puntosSuspensivos mt-2">{{ generoId?.nombre?.toUpperCase() }}</h5>
+            <div class="d-flex w-100 justify-content-between mt-3">
+                <a class="btn btn-secondary w-50 me-2 mt-1 text-light" [routerLink]="['/genero/edit', generoId?.id]"><i class="bi bi-gear-fill"></i>&nbsp;&nbsp;EDITAR</a>
+                <a class="btn btn-danger w-50 mt-1 text-center text-light" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="onDeleteClick($event)">
+                    <i class="bi bi-trash-fill"></i>&nbsp;&nbsp;ELIMINAR
+                </a>
+            </div>
+        </div>
+    </a>
+</div-->
+
+

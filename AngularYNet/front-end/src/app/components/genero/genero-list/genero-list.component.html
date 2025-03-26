@@ -1,0 +1,64 @@
+<div class="margenesPantalla">
+    
+    <div class="w-100 mb-5">
+        <a class="btn btn-success py-2 mb-1 d-flex justify-content-center align-items-center" [routerLink]="['/genero/add']">
+            <i class="bi bi-sign-intersection-fill"></i>&nbsp;&nbsp;&nbsp;AÑADIR GÉNERO
+        </a>
+        
+        <mat-paginator class="border border-black border-1 mt-4" [pageSizeOptions]="[16, 24, 36, 48]" 
+            showFirstLastButtons="true" [length]="cantidadTotalElementos" 
+            [pageSize]="elementosAMostrar" (page)="actualizarPaginacion($event)">
+        </mat-paginator>
+    </div>        
+    
+    <div class="d-flex flex-wrap mb-5 align-center justify-content-center">
+        @for (genero of listaGeneros; track $index) {
+
+            <div id="carta" class="card mx-3 mb-4" style="width: 18rem;">
+                <a [routerLink]="['/genero', genero.id]">
+                    <div class="card-body">
+                        <h5 class="card-title text-center m-0 puntosSuspensivos mt-2">{{ genero.nombre.toUpperCase() }}</h5>
+                        <div class="d-flex w-100 justify-content-between mt-3">
+                            <a class="btn btn-secondary w-50 me-2 mt-1 text-light" [routerLink]="['/genero/edit', genero.id]">
+                                <i class="bi bi-gear-fill"></i>&nbsp;&nbsp;EDITAR
+                            </a>
+                            <!--a class="btn btn-danger w-50 mt-1 text-center text-light" data-bs-toggle="modal" 
+                            data-bs-target="#deleteModal" (click)="extraerDatosAModal(genero.id, genero.nombre, $event)">
+                                <i class="bi bi-trash-fill"></i>&nbsp;&nbsp;ELIMINAR
+                            </a-->
+                            <a class="btn btn-danger w-50 mt-1 text-center text-light" (click)="eliminarGenero(genero.id)">
+                                <i class="bi bi-trash-fill"></i>&nbsp;&nbsp;ELIMINAR
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+
+  <!-- Modal -->
+  <!--div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">
+                    SE ELIMINARÁ EL GÉNERO:<br>"{{ nombre?.toUpperCase() }}"
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fw-bold">
+                <i class="text-danger bi bi-exclamation-triangle-fill"></i>
+                &nbsp;¿DESEA CONTINUAR?&nbsp;
+                <i class="text-danger bi bi-exclamation-triangle-fill"></i> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+                <a class="btn btn-danger" (click)="eliminarGenero()" data-bs-dismiss="modal">
+                    <i class="bi bi-trash-fill"></i>&nbsp;&nbsp;ELIMINAR
+                </a>
+            </div>
+        </div>
+    </div>
+  </div-->

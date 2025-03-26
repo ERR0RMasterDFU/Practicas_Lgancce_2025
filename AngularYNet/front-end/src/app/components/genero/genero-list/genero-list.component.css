@@ -1,0 +1,44 @@
+.margenesPantalla {
+    margin: 50px 75px;
+}
+
+.margenes{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.botonFixed {
+    width: 180px; /* El tamaño del botón siempre será el mismo*/
+    flex-shrink: 0; /* Evita que el botón se reduzca */
+}
+
+.paginadorFlexible {
+    flex-grow: 1; /* El paginador crecerá para ocupar el espacio restante */
+}
+
+.puntosSuspensivos{
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#carta {
+    background-color: white;
+}
+
+#carta:hover {
+    background-color: #0d6efd; 
+}
+
+#carta h5 { 
+    color: black;
+}
+
+#carta:hover h5 {
+    color: white;
+}

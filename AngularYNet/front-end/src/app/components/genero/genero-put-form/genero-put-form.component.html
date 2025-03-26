@@ -1,0 +1,14 @@
+<div class="m-5">
+    <div class="card bg-warning" style="width: 18rem;">
+        <div class="card-body">
+            <h3 class="card-title fw-bold mt-2 text-center text-dark">EDITAR GÉNERO</h3>
+            <input type="text" class="form-control mt-3 barraAncho" 
+            placeholder="Nombre del género" [(ngModel)]="nombre" 
+            />
+            <div class="d-flex w-100 justify-content-between mt-3">
+                <button [disabled]="deshabilitarBoton()" class="btn btn-success w-50 me-3 mt-1" (click)="editarGenero()">¡GUARDAR!</button>
+                <a class="btn btn-danger w-50 mt-1" [routerLink]="['/generos']">CANCELAR</a>
+            </div>
+        </div>
+    </div>
+</div>
