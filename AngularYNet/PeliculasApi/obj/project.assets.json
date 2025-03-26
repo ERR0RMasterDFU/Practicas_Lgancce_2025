@@ -6362,11 +6362,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LGANCCE\\Desktop\\ProyectosPracticas\\AngularYNet\\PeliculasApi\\PeliculasApi.csproj",
+      "projectUniqueName": "C:\\Users\\LGANCCE\\Desktop\\ProyectosPracticas\\Practicas_Lgancce_2025\\AngularYNet\\PeliculasApi\\PeliculasApi.csproj",
       "projectName": "PeliculasApi",
-      "projectPath": "C:\\Users\\LGANCCE\\Desktop\\ProyectosPracticas\\AngularYNet\\PeliculasApi\\PeliculasApi.csproj",
+      "projectPath": "C:\\Users\\LGANCCE\\Desktop\\ProyectosPracticas\\Practicas_Lgancce_2025\\AngularYNet\\PeliculasApi\\PeliculasApi.csproj",
       "packagesPath": "C:\\Users\\LGANCCE\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LGANCCE\\Desktop\\ProyectosPracticas\\AngularYNet\\PeliculasApi\\obj\\",
+      "outputPath": "C:\\Users\\LGANCCE\\Desktop\\ProyectosPracticas\\Practicas_Lgancce_2025\\AngularYNet\\PeliculasApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",

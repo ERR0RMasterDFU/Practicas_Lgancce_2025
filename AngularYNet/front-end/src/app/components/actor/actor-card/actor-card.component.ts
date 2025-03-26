@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { GetActorDtoSimple } from '../../../interfaces/actor.interfaces';
 
 @Component({
   selector: 'app-actor-card',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './actor-card.component.css'
 })
 export class ActorCardComponent {
+
+  @Input() actor: GetActorDtoSimple | undefined;
 
 }

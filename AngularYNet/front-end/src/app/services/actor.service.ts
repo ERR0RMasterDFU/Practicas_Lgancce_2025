@@ -2,12 +2,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { EditActorRequest, GetActorDtoSimple } from '../interfaces/actor.interfaces';
+import { EditActorRequest, GetActorDtoCompleto, GetActorDtoSimple } from '../interfaces/actor.interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActorServiceTsService {
+export class ActorService {
 
   constructor(private http: HttpClient) {}
 
@@ -19,13 +19,13 @@ export class ActorServiceTsService {
     params = params.append('elementosPorPagina', elementosAMostrar.toString());
     return this.http.get<GetActorDtoSimple[]>(this.apiUrl, {observe: 'response', params});
   }
-/*
-  getGeneroById(id: number): Observable<GeneroResponse> {
-    const url = this.apiUrl + "/" + id;
-    return this.http.get<GeneroResponse>(url);
-  }*/
 
-  crearGenero(actor: EditActorRequest) {
+  getActorById(id: number): Observable<GetActorDtoCompleto> {
+    const url = this.apiUrl + "/" + id;
+    return this.http.get<GetActorDtoCompleto>(url);
+  }
+
+  crearActor(actor: EditActorRequest) {
     const formData = this.construirFormData(actor);
     return this.http.post(this.apiUrl, formData);
   }
@@ -64,11 +64,11 @@ export class ActorServiceTsService {
       nombre: nombre
     };
     return this.http.put(url, body);
-  }
+  }*/
 
-  eliminarGenero(id: number) {
+  eliminarActor(id: number) {
     const url = this.apiUrl + "/" + id;
     return this.http.delete(url);
-  }*/
+  }
 
 }

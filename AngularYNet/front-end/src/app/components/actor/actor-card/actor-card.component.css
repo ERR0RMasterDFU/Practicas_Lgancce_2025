@@ -1,0 +1,39 @@
+.puntosSuspensivos {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2; /* Limita a dos líneas */
+    text-overflow: ellipsis;
+    white-space: normal; /* Permite saltos de línea */
+}
+
+.puntosSuspensivos2{
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.cartaTextoAlto {
+    margin: 12px 0px;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#carta {
+    background-color: white;
+}
+
+#carta:hover {
+    background-color: #f1eb68; 
+}
+
+#carta h5 { 
+    color: black;
+}
+
+#carta:hover h5 {
+    color: rgb(0, 0, 0);
+}

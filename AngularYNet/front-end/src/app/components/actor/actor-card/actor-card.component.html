@@ -1,0 +1,17 @@
+<div id="carta" class="card" style="width: 18rem;">
+    <a [routerLink]="['/actor', actor?.id]">
+        <img [src]="actor?.foto" class="card-img-top puntosSuspensivos2" [alt]="'Foto de '+ actor?.nombre">
+        <div class="card-body text-center">
+            @if(actor!.nombre!.length > 46) {
+                <h5 class="card-title m-0 puntosSuspensivos">{{actor?.nombre}}</h5>
+            } @else {
+                @if(actor!.nombre!.length > 23) {
+                    <h5 class="card-title m-0">{{actor?.nombre}}</h5>
+                } @else {
+                    <h5 class="card-title align-middle cartaTextoAlto">{{actor?.nombre}}</h5>
+                }
+            }
+            <!--a href="#" class="btn btn-primary">Go somewhere</a-->
+        </div>
+    </a>
+</div>

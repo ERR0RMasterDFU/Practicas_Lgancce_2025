@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using PeliculasApi.DTOs.Actor;
+using System;
 
 namespace PeliculasApi.Controllers
 {
@@ -20,11 +21,14 @@ namespace PeliculasApi.Controllers
 
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
+        private readonly IAlmacenadorArchivos almacenadorDeArchivos;
+        private readonly string contendor = "actores";
 
-        public ActorController(ApplicationDbContext context, IMapper mapper)
+        public ActorController(ApplicationDbContext context, IMapper mapper, IAlmacenadorArchivos almacenadorDeArchivos)
         {
             this.context = context;
             this.mapper = mapper;
+            this.almacenadorDeArchivos = almacenadorDeArchivos;
         }
 
 
@@ -57,9 +61,14 @@ namespace PeliculasApi.Controllers
         {
             var nuevoActor = mapper.Map<Actor>(datosActor);
             
+            if (datosActor.Foto != null)
+            {
+                nuevoActor.Foto = await almacenadorDeArchivos.GuardarArchivo(contendor, datosActor.Foto);
+            }
+
             context.Add(nuevoActor);
             await context.SaveChangesAsync();
-
+            Console.WriteLine(datosActor.Foto);
             var nuevoActorDto = mapper.Map<GetActorDtoCompleto>(nuevoActor);
 
             return CreatedAtAction(nameof(GetById), new { id = nuevoActorDto.Id }, nuevoActorDto);

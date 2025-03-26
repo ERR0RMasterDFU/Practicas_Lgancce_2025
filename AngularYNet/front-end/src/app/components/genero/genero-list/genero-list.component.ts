@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { GeneroService } from '../../../services/genero.service';
 import { GeneroResponse } from '../../../interfaces/genero.interfaces';
 import { HttpResponse } from '@angular/common/http';

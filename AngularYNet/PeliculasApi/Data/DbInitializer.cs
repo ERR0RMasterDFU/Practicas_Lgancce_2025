@@ -2,6 +2,7 @@
 using PeliculasApi.Modelos;
 using System;
 using System.Linq;
+using static System.Net.WebRequestMethods;
 
 namespace PeliculasApi.Data
 {
@@ -81,7 +82,7 @@ namespace PeliculasApi.Data
 
 
             // ACTORES -------------------------------------------------------------------------------------------------------
-
+            // https://localhost:44391/actores/43557e84-4c1f-48c6-9bed-0b3548c34a71.png
             var actores = new Actor[]
             {
                 new Actor
@@ -91,11 +92,11 @@ namespace PeliculasApi.Data
                     "convertirse en el Rey de los Piratas. Luffy posee una fuerza extraordinaria y la habilidad de estirarse " +
                     "como goma, gracias a haber comido la fruta del diablo Gomu Gomu no Mi (Hito Hito no Mi Modelo Nika).",
                     FechaNacimiento = new DateTime(1999, 5, 5),
-                    Foto = null
+                    Foto = "https://localhost:44391/actores/luffy.png"
                 },
                 new Actor
                 {
-                    Nombre = "Roronoa Zoro",
+                    Nombre = "Zoro Roronoa",
                     Biografia = "Zoro es el espadachín de los Piratas de Sombrero de Paja. Es un experto en el estilo de tres " +
                     "espadas y su objetivo es convertirse en el mejor espadachín del mundo, un sueño que persigue para honrar " +
                     "la memoria de su amiga Kuina.",
@@ -117,7 +118,7 @@ namespace PeliculasApi.Data
                     "mentir y sus historias fantásticas, pero a pesar de su naturaleza miedosa, demuestra gran valentía en las " +
                     "batallas. Su sueño es convertirse en un valiente guerrero del mar.",
                     FechaNacimiento = new DateTime(1999, 4, 1),
-                    Foto = null
+                    Foto = "https://localhost:44391/actores/usopp.png"
                 },
                 new Actor
                 {
@@ -148,7 +149,7 @@ namespace PeliculasApi.Data
                 },
                 new Actor
                 {
-                    Nombre = "Franky (Cutty Flam)",
+                    Nombre = "Cutty Flam (Franky)",
                     Biografia = "Franky es el carpintero de los Piratas de Sombrero de Paja. Es un cyborg con habilidades mecánicas " +
                     "excepcionales, y su sueño es construir el mejor barco del mundo, el Thousand Sunny.",
                     FechaNacimiento = new DateTime(1994, 6, 9),
@@ -206,7 +207,7 @@ namespace PeliculasApi.Data
                 },
                 new Actor
                 {
-                    Nombre = "Nefertari Vivi",
+                    Nombre = "Vivi Nefertari",
                     Biografia = "Vivi es la princesa de Alabasta y una amiga cercana de los Piratas de Sombrero de Paja. Luchó " +
                     "junto a ellos para derrocar a Crocodile y salvar su país. Su sueño es traer la paz a su nación.",
                     FechaNacimiento = new DateTime(1996, 12, 22),
@@ -214,7 +215,7 @@ namespace PeliculasApi.Data
                 },
                 new Actor
                 {
-                    Nombre = "Bartholomew Kuma",
+                    Nombre = "Kuma Bartholomew",
                     Biografia = "Kuma es el padre de Bonney y un ex miembro de los Siete Guerreros del Mar y un personaje " +
                     "importante en la lucha contra el gobierno mundial. Es conocido por su poder de repeler cualquier cosa, " +
                     "incluso el dolor y las emociones.",
@@ -223,7 +224,7 @@ namespace PeliculasApi.Data
                 },
                 new Actor
                 {
-                    Nombre = "Dracule Mihawk",
+                    Nombre = "Mihawk Dracule",
                     Biografia = "Mihawk es el mejor espadachín del mundo y miembro de los Siete Guerreros del Mar. Su " +
                     "habilidad con la espada es incomparable y su sueño es continuar siendo el más fuerte.",
                     FechaNacimiento = new DateTime(1980, 11, 15),
@@ -266,8 +267,8 @@ namespace PeliculasApi.Data
                 },
                 new Actor
                 {
-                    Nombre = "X Drake",
-                    Biografia = "X Drake es un miembro de SWORD, que se hizo pasar por un antiguo Marine que se unió a los " +
+                    Nombre = "X-Drake",
+                    Biografia = "X-Drake es un miembro de SWORD, que se hizo pasar por un antiguo Marine que se unió a los " +
                     "piratas como uno de los Supernovas. Tiene la habilidad de la Ryu Ryu no Mi modelo Alosaurio, que le " +
                     "permite transformarse en un dinosaurio. Su objetivo personal es tomar acabar con el gobierno mundial.",
                     FechaNacimiento = new DateTime(1985, 7, 10),
@@ -275,7 +276,7 @@ namespace PeliculasApi.Data
                 },
                 new Actor
                 {
-                    Nombre = "Kizaru (Borsalino)",
+                    Nombre = "Borsalino (Kizaru)",
                     Biografia = "Kizaru es un Almirante de la Marina, conocido por su increíble velocidad y habilidad con el " +
                     "rayo gracias a la Pika Pika no Mi. Es un hombre indiferente que sigue la doctrina de la justicia absoluta.",
                     FechaNacimiento = new DateTime(1974, 5, 5),
@@ -283,7 +284,7 @@ namespace PeliculasApi.Data
                 },
                 new Actor
                 {
-                    Nombre = "Akainu (Sakazuki)",
+                    Nombre = "Sakazuki (Akainu)",
                     Biografia = "Akainu es el actual almirante de flota de la Marina, conocido por su extrema dureza y justicia " +
                     "absoluta. Tiene el poder de la Magu Magu no Mi, que le permite controlar la lava.",
                     FechaNacimiento = new DateTime(1960, 12, 12),
@@ -317,7 +318,7 @@ namespace PeliculasApi.Data
                 },
                 new Actor
                 {
-                    Nombre = "Boa Hancock",
+                    Nombre = "Hancock Boa",
                     Biografia = "Hancock es la capitana de los Piratas Kuja y una de las Siete Guerreras del Mar. Tiene el " +
                     "poder de la Mero Mero no Mi, que le permite convertir a las personas en piedra con su mirada.",
                     FechaNacimiento = new DateTime(1986, 11, 23),
@@ -333,7 +334,7 @@ namespace PeliculasApi.Data
                 },
                 new Actor
                 {
-                    Nombre = "Charlotte Linlin (Big Mom)",
+                    Nombre = "Linlin Charlotte (Big Mom)",
                     Biografia = "Big Mom es una de los Cuatro Emperadores del Mar. Es una mujer monstruosa que posee una " +
                     "increíble fuerza y el poder de la Soru Soru no Mi, que le permite manipular almas. Su sueño es crear " +
                     "un mundo donde todos los pueblos del mar convivan en paz, aunque a menudo usa métodos despiadados.",
@@ -451,7 +452,7 @@ namespace PeliculasApi.Data
                 },
                 new Actor
                 {
-                    Nombre = "Aokiji (Kuzan)",
+                    Nombre = "Kuzan (Aokiji)",
                     Biografia = "Aokiji, cuyo verdadero nombre es Kuzan, es un ex almirante de la Marina que " +
                     "abandonó su puesto tras un enfrentamiento con Akainu por la posición de almirante. Tiene " +
                     "la habilidad de la Hie Hie no Mi, que le otorga el poder de controlar el hielo. A pesar " +

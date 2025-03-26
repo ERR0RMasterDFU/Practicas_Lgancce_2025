@@ -16,9 +16,10 @@ import { GeneroDetailsComponent } from './components/genero/genero-details/gener
 import { GeneroPutFormComponent } from './components/genero/genero-put-form/genero-put-form.component';
 import { MostrarErroresComponent } from './errors/mostrar-errores/mostrar-errores.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ModalComponent } from './components/shared/modal/modal.component';
 import { ActorCardComponent } from './components/actor/actor-card/actor-card.component';
 import { ActorListComponent } from './components/actor/actor-list/actor-list.component';
+import { ActorPostFormComponent } from './components/actor/actor-post-form/actor-post-form.component';
+import { ActorDetailComponent } from './components/actor/actor-detail/actor-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +32,10 @@ import { ActorListComponent } from './components/actor/actor-list/actor-list.com
     GeneroDetailsComponent,
     GeneroPutFormComponent,
     MostrarErroresComponent,
-    ModalComponent,
     ActorCardComponent,
     ActorListComponent,
+    ActorPostFormComponent,
+    ActorDetailComponent,
     
   ],
   imports: [

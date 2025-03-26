@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SQ+3QccWYuI=",
+  "dgSpecHash": "raQHnWhXbBI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\LGANCCE\\Desktop\\ProyectosPracticas\\AngularYNet\\PeliculasApi\\PeliculasApi.csproj",
+  "projectFilePath": "C:\\Users\\LGANCCE\\Desktop\\ProyectosPracticas\\Practicas_Lgancce_2025\\AngularYNet\\PeliculasApi\\PeliculasApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LGANCCE\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\LGANCCE\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
