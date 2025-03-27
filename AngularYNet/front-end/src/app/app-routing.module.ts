@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'actores', component: ActorListComponent},
   {path: 'actor/:id', component: ActorDetailComponent},
   {path: 'actor/nuevo', component: ActorPostFormComponent},
-  //{path: 'genero/edit/:id', component: GeneroPutFormComponent},
+  //{path: 'actor/edit/:id', component: GeneroPutFormComponent},
   {path: '', redirectTo: 'generos', pathMatch: 'full'},
 ];
 
