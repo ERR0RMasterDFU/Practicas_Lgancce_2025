@@ -1,0 +1,11 @@
+textarea {
+    resize: none;
+}
+
+.margenesPantalla {
+    margin: 50px 75px;
+}
+
+.card {
+    margin-bottom: 50px; 
+}

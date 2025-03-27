@@ -1,0 +1,77 @@
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+
+<div class="d-flex justify-content-center margenesPantalla">
+    <div class="card bg-warning" style="width: 60rem;">
+        <div class="card-body">
+            <h3 class="card-title fw-bold mt-2 text-center text-dark">EDITAR ACTOR</h3>
+
+            <input type="text" class="form-control mt-3" required="true" placeholder="Nombre del actor" [(ngModel)]="nombre"/>
+            <div class="d-flex w-100 mt-3 mb-4">
+                <div class="divTextArea">
+                    <textarea type="text" rows="9" class="form-control" placeholder="Escribe aquí..." [(ngModel)]="biografia"></textarea>
+                </div>
+                <div class="ms-3">
+                    <mat-form-field class="mb-0 mt-1">
+                        <mat-label>Fecha de Nacimiento</mat-label>
+                        <input matInput [matDatepicker]="picker" [(ngModel)]="fechaNacimiento" 
+                        name="fechaNacimiento" placeholder="Seleccione la fecha"/>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <label for="formFile" class="form-label btn btn-primary mb-0 w-100 text-light">
+                        <i class="bi bi-camera-fill"></i>&nbsp;&nbsp;&nbsp;SELECCIONAR UNA FOTO
+                    </label>
+                    <input class="form-control" type="file" id="formFile" (change)="onFileSelected($event)">
+                    <button class="btn btn-danger w-100 mt-3" (click)="eliminarFotoActual()">
+                        <i class="bi bi-trash-fill"></i>&nbsp;&nbsp;&nbsp;ELIMINAR FOTO ACTUAL
+                    </button>
+                    <button class="btn btn-success w-100 mt-3" (click)="eliminarNuevaFoto()">
+                        <i class="bi bi-trash-fill"></i>&nbsp;&nbsp;&nbsp;ELIMINAR NUEVA FOTO
+                    </button>
+                </div>
+            </div>
+            
+
+            @if(imagenSeleccionada && !fotoString) {
+                <div class="d-flex justify-content-center mb-4 mt-2">
+                    <img [src]="imagenSeleccionada" class="border border-5 border-light" alt="Imagen Seleccionada" width="60%" height="auto">
+                </div>
+            }
+
+            @if(fotoString) {
+                @if(imagenSeleccionada) {
+                    <div class="d-flex w-100 justify-content-between align-items-center">
+                        <div class="imgOcup ms-2">
+                            <h3 class="m-0 text-dark">FOTO ACTUAL</h3>
+                            <div class="mb-4 mt-2">
+                                <img [src]="fotoString" class="border border-5 border-light" alt="Imagen Seleccionada" width="100%" height="auto">
+                            </div>
+                        </div>
+                        <div class="flechaOcup mx-4">
+                            <div class="mb-4 mt-2">
+                                <img src="/pictures/flecha.png" alt="Flecha" width="100%" height="auto">
+                            </div>
+                        </div>
+                        <div class="imgOcup me-2">
+                            <h3 class="m-0 text-dark">NUEVA FOTO</h3>
+                            <div class="d-flex justify-content-center mb-4 mt-2">
+                                <img [src]="imagenSeleccionada" class="border border-5 border-light" alt="Imagen Seleccionada" width="100%" height="auto">
+                            </div>
+                        </div>
+                    </div>
+                } @else {
+                    <div class="d-flex justify-content-center mb-4 mt-2">
+                        <img [src]="fotoString" class="border border-5 border-light" alt="Imagen Seleccionada" width="60%" height="auto">
+                    </div>
+                }
+                
+            }
+        
+           
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <button [disabled]="deshabilitarBoton()" class="btn btn-success w-50 me-3 mt-1" (click)="editarActor()">¡GUARDAR CAMBIOS!</button>
+                <a class="btn btn-danger w-50 mt-1" [routerLink]="['/actores']">CANCELAR</a>
+            </div>
+        </div>
+    </div>
+</div>

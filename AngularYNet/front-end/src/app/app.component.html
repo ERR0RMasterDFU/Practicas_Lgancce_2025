@@ -1,7 +1,5 @@
 <app-nav-bar></app-nav-bar>
 
-@if(route === routeAdd){
-    <app-genero-post-form></app-genero-post-form>
-} @else {
-    <router-outlet></router-outlet>
-}
+<app-genero-post-form *ngIf="route === routeGeneroAdd"></app-genero-post-form>
+<app-actor-post-form *ngIf="route === routeActorAdd"></app-actor-post-form>
+<router-outlet *ngIf="route !== routeGeneroAdd && route !== routeActorAdd"></router-outlet>

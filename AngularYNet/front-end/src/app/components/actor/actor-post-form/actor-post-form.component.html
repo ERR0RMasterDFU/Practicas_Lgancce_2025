@@ -1,15 +1,15 @@
 <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
 
-<div class="position-absolute top-50 start-50 translate-middle">
+<div class="d-flex justify-content-center margenesPantalla">
     <div class="card bg-primary" style="width: 55rem;">
-        <div class="card-body pb-0">
+        <div class="card-body">
             <h3 class="card-title fw-bold mt-2 text-center text-light">CREAR ACTOR</h3>
 
             <input type="text" class="form-control mt-3" required="true" placeholder="Nombre del actor" [(ngModel)]="nombre"/>
-            <textarea type="text" class="form-control mt-3" placeholder="Escribe aquí..." [(ngModel)]="biografia"></textarea>
+            <textarea type="text" rows="6" class="form-control mt-3" placeholder="Escribe aquí..." [(ngModel)]="biografia"></textarea>
 
             <div class="d-flex w-100 mt-3">
-                <mat-form-field class="me-3 mb-0">
+                <mat-form-field class="me-3 mb-0 mt-1">
                     <mat-label>Fecha de Nacimiento</mat-label>
                     <input matInput [matDatepicker]="picker" [(ngModel)]="fechaNacimiento" 
                     name="fechaNacimiento" placeholder="Seleccione la fecha"/>
@@ -17,12 +17,17 @@
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
 
-                <div class="flex-fill mt-2">
+                <div class="flex-fill">
+                    <label for="formFile" class="form-label mb-0 text-light">Foto del actor:</label>
                     <input class="form-control" type="file" id="formFile" (change)="onFileSelected($event)">
                 </div>
             </div>
-           
-            <div class="d-flex w-100 justify-content-between mt-3">
+
+            <div *ngIf="imagenSeleccionada" class="d-flex justify-content-center mb-4 mt-2">
+                <img [src]="imagenSeleccionada" class="border border-5 border-light" alt="Imagen Seleccionada" width="60%" height="auto">
+            </div>
+            
+            <div class="d-flex w-100 justify-content-between">
                 <button [disabled]="deshabilitarBoton()" class="btn btn-success w-50 me-3 mt-1" (click)="crearActor()">¡CREAR!</button>
                 <a class="btn btn-danger w-50 mt-1" [routerLink]="['/actores']">CANCELAR</a>
             </div>

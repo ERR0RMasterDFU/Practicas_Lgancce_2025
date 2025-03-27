@@ -38,6 +38,14 @@ namespace PeliculasApi.Utilidades
 
         public async Task<string> EditarArchivo(string contenedor, IFormFile archivo, string ruta)
         {
+            if (archivo == null)
+            {
+                // Si el archivo es null, borrar el archivo en la ruta y luego retornar la ruta vacía o null
+                await BorrarArchivo(ruta, contenedor);
+                return null;  // Retornamos null si no hay archivo para guardar
+            }
+
+            // Si el archivo no es null, borramos el archivo anterior y guardamos el nuevo
             await BorrarArchivo(ruta, contenedor);
             return await GuardarArchivo(contenedor, archivo);
         }

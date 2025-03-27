@@ -1,0 +1,27 @@
+textarea {
+    resize: none;
+}
+
+input[type="file"] {
+    display: none; /* Oculta el input file */
+}
+
+.margenesPantalla {
+    margin: 50px 75px;
+}
+
+.divTextArea{
+    width: 300%;
+}
+
+.card {
+    margin-bottom: 50px; 
+}
+
+.flechaOcup {
+    width: 10%;
+}
+
+.imgOcup {
+    width: 45%;
+}

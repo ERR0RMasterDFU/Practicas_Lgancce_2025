@@ -20,6 +20,7 @@ import { ActorCardComponent } from './components/actor/actor-card/actor-card.com
 import { ActorListComponent } from './components/actor/actor-list/actor-list.component';
 import { ActorPostFormComponent } from './components/actor/actor-post-form/actor-post-form.component';
 import { ActorDetailComponent } from './components/actor/actor-detail/actor-detail.component';
+import { ActorPutFormComponent } from './components/actor/actor-put-form/actor-put-form.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ActorDetailComponent } from './components/actor/actor-detail/actor-deta
     ActorListComponent,
     ActorPostFormComponent,
     ActorDetailComponent,
+    ActorPutFormComponent,
     
   ],
   imports: [

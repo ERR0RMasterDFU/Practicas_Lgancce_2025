@@ -10,7 +10,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using PeliculasApi.DTOs.Actor;
-using System;
 
 namespace PeliculasApi.Controllers
 {
@@ -22,7 +21,7 @@ namespace PeliculasApi.Controllers
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
         private readonly IAlmacenadorArchivos almacenadorDeArchivos;
-        private readonly string contendor = "actores";
+        private readonly string contenedor = "actores";
 
         public ActorController(ApplicationDbContext context, IMapper mapper, IAlmacenadorArchivos almacenadorDeArchivos)
         {
@@ -63,28 +62,46 @@ namespace PeliculasApi.Controllers
             
             if (datosActor.Foto != null)
             {
-                nuevoActor.Foto = await almacenadorDeArchivos.GuardarArchivo(contendor, datosActor.Foto);
+                nuevoActor.Foto = await almacenadorDeArchivos.GuardarArchivo(contenedor, datosActor.Foto);
             }
 
             context.Add(nuevoActor);
             await context.SaveChangesAsync();
-            Console.WriteLine(datosActor.Foto);
+           
             var nuevoActorDto = mapper.Map<GetActorDtoCompleto>(nuevoActor);
 
             return CreatedAtAction(nameof(GetById), new { id = nuevoActorDto.Id }, nuevoActorDto);
         }
 
-        /*
+        
         [HttpPut("{id:long}")]
-        public async Task<ActionResult<Actor>> Edit([FromBody] EditActorRequest datosActor, [FromRoute] long id)
+        public async Task<ActionResult<Actor>> Edit([FromForm] EditActorRequest datosActor, [FromRoute] long id)
         {
-            var actor = await GetById(id);
-            Actor actorEditado = servicio.Edit(datosGenero, genero.Value);
+
+            var actorAEditar = await context.Actor.FindAsync(id);
+            if (actorAEditar == null)
+            {
+                throw new EntityNotFoundException($"No se ha encontrado ningún Actor con el ID: {id}");
+            }
+
+            var actorEditado = mapper.Map(datosActor, actorAEditar);
+
+            // Si la foto es null, la lógica de borrar y no guardar se maneja en el método EditarArchivo
+            if (datosActor.Foto != null)
+            {
+                actorEditado.Foto = await almacenadorDeArchivos.EditarArchivo(contenedor, datosActor.Foto, actorEditado.Foto);
+            }
+            else
+            {
+                // Si no hay foto, la ruta se establecerá a null y no se guardará ninguna foto
+                actorEditado.Foto = null;
+            }
+
             context.Update(actorEditado);
             await context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetById), new { id = id }, actorEditado);
-        }*/
+        }
 
 
         [HttpDelete("{id:long}")]
@@ -100,6 +117,7 @@ namespace PeliculasApi.Controllers
             {
                 context.Remove(actor);
                 await context.SaveChangesAsync();
+                await almacenadorDeArchivos.BorrarArchivo(actor.Foto, contenedor);
                 return NoContent();
             }
         }

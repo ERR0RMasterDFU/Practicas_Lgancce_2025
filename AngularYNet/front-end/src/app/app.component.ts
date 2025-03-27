@@ -11,7 +11,8 @@ export class AppComponent implements OnInit {
   title = 'front-end';
 
   route = "";
-  routeAdd = "/genero/add";
+  routeGeneroAdd = "/genero/add";
+  routeActorAdd = "/actor/add";
 
 
   constructor(private router: Router){}

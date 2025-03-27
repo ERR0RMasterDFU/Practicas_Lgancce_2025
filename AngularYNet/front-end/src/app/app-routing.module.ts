@@ -7,6 +7,7 @@ import { GeneroPutFormComponent } from './components/genero/genero-put-form/gene
 import { ActorListComponent } from './components/actor/actor-list/actor-list.component';
 import { ActorPostFormComponent } from './components/actor/actor-post-form/actor-post-form.component';
 import { ActorDetailComponent } from './components/actor/actor-detail/actor-detail.component';
+import { ActorPutFormComponent } from './components/actor/actor-put-form/actor-put-form.component';
 
 const routes: Routes = [
   {path: 'generos', component: GeneroListComponent},
@@ -15,8 +16,8 @@ const routes: Routes = [
   {path: 'genero/edit/:id', component: GeneroPutFormComponent},
   {path: 'actores', component: ActorListComponent},
   {path: 'actor/:id', component: ActorDetailComponent},
-  {path: 'actor/nuevo', component: ActorPostFormComponent},
-  //{path: 'actor/edit/:id', component: GeneroPutFormComponent},
+  {path: 'actor/add', component: ActorPostFormComponent},
+  {path: 'actor/edit/:id', component: ActorPutFormComponent},
   {path: '', redirectTo: 'generos', pathMatch: 'full'},
 ];
 

@@ -16,6 +16,7 @@ namespace PeliculasApi.Utilidades
             CreateMap<EditActorRequest, Actor>().ForMember(x => x.Foto, options => options.Ignore()); // SE IGNORA LA FOTO
             CreateMap<Actor, GetActorDtoSimple>().ReverseMap();
             CreateMap<Actor, GetActorDtoCompleto>().ReverseMap();
+            CreateMap<GetActorDtoCompleto, Actor>().ReverseMap();
 
 
             /* 

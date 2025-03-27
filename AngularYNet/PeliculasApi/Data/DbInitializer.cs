@@ -82,7 +82,7 @@ namespace PeliculasApi.Data
 
 
             // ACTORES -------------------------------------------------------------------------------------------------------
-            // https://localhost:44391/actores/43557e84-4c1f-48c6-9bed-0b3548c34a71.png
+
             var actores = new Actor[]
             {
                 new Actor
@@ -195,7 +195,7 @@ namespace PeliculasApi.Data
                     "humana gracias a su Ope Ope no Mi. Su sueño es descubrir el misterio detrás de la 'D' en su nombre y vengar " +
                     "la muerte de su familia.",
                     FechaNacimiento = new DateTime(1991, 10, 14),
-                    Foto = null
+                    Foto = "https://localhost:44391/actores/trafalgar_law.png"
                 },
                 new Actor
                 {

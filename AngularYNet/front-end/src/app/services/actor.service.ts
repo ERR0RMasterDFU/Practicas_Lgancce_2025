@@ -30,6 +30,20 @@ export class ActorService {
     return this.http.post(this.apiUrl, formData);
   }
 
+  editarActor(id:number, actor: EditActorRequest) {
+    const url = this.apiUrl + "/" + id;
+    const formData = this.construirFormData(actor);
+    return this.http.put(url, formData);
+  }
+
+  eliminarActor(id: number) {
+    const url = this.apiUrl + "/" + id;
+    return this.http.delete(url);
+  }
+
+
+  // MÉTODOS AUXILIARES ----------------------------------------------------------------------------------
+
   private construirFormData(actor: EditActorRequest): FormData {
     const formData = new FormData();
     formData.append('nombre', actor.nombre);
@@ -39,7 +53,8 @@ export class ActorService {
     }
   
     if(actor.fechaNacimiento){
-      formData.append('fechaNacimiento', this.formatearFecha(actor.fechaNacimiento));
+      const fecha = new Date(actor.fechaNacimiento);  // Convierte a Date si es necesario
+      formData.append('fechaNacimiento', this.formatearFecha(fecha));
     }
 
     if(actor.foto){
@@ -56,19 +71,18 @@ export class ActorService {
     
     return `${dia}/${mes}/${anio}`;
   }
-
 /*
-  editarGenero(nombre: string, id: number) {
-    const url = this.apiUrl + "/" + id;
-    const body = {
-      nombre: nombre
-    };
-    return this.http.put(url, body);
+  private formatearFecha(fecha: Date): Date {
+    const dia = String(fecha.getDate()).padStart(2, '0');       // DÍA CON 2 DÍGITOS
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0');  // MES CON 2 DÍGITOS
+    const anio = fecha.getFullYear();                           // AÑO CON 4 DÍGITOS
+    
+    // FORMATEAMOS LA FECHA PARA CREAR EL DATE (ISO 8601: "YYYY-MM-DD")
+    const fechaFormateada = `${anio}-${mes}-${dia}`;
+
+    return new Date(fechaFormateada);
   }*/
 
-  eliminarActor(id: number) {
-    const url = this.apiUrl + "/" + id;
-    return this.http.delete(url);
-  }
+  // -----------------------------------------------------------------------------------------------------
 
 }

@@ -3,6 +3,7 @@ import { parsearErroresAPI } from '../../../errors/mostrar-errores/utilidades';
 import { Router } from '@angular/router';
 import { ActorService } from '../../../services/actor.service';
 import { EditActorRequest } from '../../../interfaces/actor.interfaces';
+import { toBase64 } from '../../utilidades';
 
 @Component({
   selector: 'app-actor-post-form',
@@ -28,7 +29,8 @@ export class ActorPostFormComponent {
   nombre!: string;
   biografia!: string;
   fechaNacimiento!: Date;
-  foto!: File;
+  foto: File = new File([], "");
+  imagenSeleccionada: string ="";
 
   errores: string[] = [];
   
@@ -72,10 +74,14 @@ export class ActorPostFormComponent {
     const file = event.target!.files[0];
     if (file) {
       this.foto = file;
+      toBase64(this.foto).then((value: any) => this.imagenSeleccionada = value);
       console.log('Archivo seleccionado:', this.foto); // Mostramos los datos del archivo
       console.log('Nombre del archivo:', this.foto.name);
       console.log('Tipo de archivo:', this.foto.type);
       console.log('Tamaño del archivo:', this.foto.size);
+    } else {
+      this.foto = new File([], "");
+      this.imagenSeleccionada = ''; 
     }
   }
 
