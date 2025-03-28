@@ -8,17 +8,24 @@ import { ActorListComponent } from './components/actor/actor-list/actor-list.com
 import { ActorPostFormComponent } from './components/actor/actor-post-form/actor-post-form.component';
 import { ActorDetailComponent } from './components/actor/actor-detail/actor-detail.component';
 import { ActorPutFormComponent } from './components/actor/actor-put-form/actor-put-form.component';
+import { esAdminGuard } from './seguridad/es-admin.guard';
+import { LoginComponent } from './seguridad/components/login/login.component';
+import { RegistroComponent } from './seguridad/components/registro/registro.component';
 
 const routes: Routes = [
   {path: 'generos', component: GeneroListComponent},
   {path: 'genero/:id', component: GeneroDetailsComponent},
   {path: 'genero/add', component: GeneroPostFormComponent},
   {path: 'genero/edit/:id', component: GeneroPutFormComponent},
-  {path: 'actores', component: ActorListComponent},
-  {path: 'actor/:id', component: ActorDetailComponent},
-  {path: 'actor/add', component: ActorPostFormComponent},
-  {path: 'actor/edit/:id', component: ActorPutFormComponent},
+  {path: 'actores', component: ActorListComponent, canActivate: [esAdminGuard]},
+  {path: 'actor/:id', component: ActorDetailComponent, canActivate: [esAdminGuard]},
+  {path: 'actor/add', component: ActorPostFormComponent, canActivate: [esAdminGuard]},
+  {path: 'actor/edit/:id', component: ActorPutFormComponent, canActivate: [esAdminGuard]},
   {path: '', redirectTo: 'generos', pathMatch: 'full'},
+
+  // SEGURIDAD 
+  {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent}
 ];
 
 @NgModule({

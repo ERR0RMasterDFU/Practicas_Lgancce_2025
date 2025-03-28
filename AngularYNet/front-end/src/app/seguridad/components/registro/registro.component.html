@@ -1,0 +1,22 @@
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+
+<div class="d-flex justify-content-center margenesPantalla">
+    <div class="card bg-warning" style="width: 30rem;">
+        <div class="card-body mx-2">
+            <h3 class="card-title fw-bold mt-2 mb-3 text-center text-dark">CREACIÓN DE CUENTA</h3>
+            <div class="mt-5 mb-2">
+                <label for="credentialEmail" class="form-label text-dark"><i class="bi bi-envelope-fill"></i>&nbsp;&nbsp;Correo electrónico</label>
+                <input type="email" id="credentialEmail" #emailInput="ngModel" class="form-control barraAncho" 
+                [(ngModel)]="email" placeholder="Escribe aquí tu Email...">
+            </div>
+            <div>
+                <label for="credentialPassword" class="form-label mt-3 text-dark"><i class="bi bi-shield-lock-fill"></i>&nbsp;&nbsp;Contraseña</label>
+                <input type="password" id="credentialPassword" class="form-control barraAncho" 
+                [(ngModel)]="password" placeholder="Escribe aquí tu Contraseña...">
+            </div>
+            <div class="mb-2 mt-4">
+                <button [disabled]="deshabilitarBoton()" class="btn btn-success w-100 me-3 mt-1" (click)="registrar()">¡REGISTRARME!</button>
+            </div>
+        </div>
+    </div>
+</div>

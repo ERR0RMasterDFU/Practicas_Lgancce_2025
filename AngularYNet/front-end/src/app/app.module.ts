@@ -21,6 +21,9 @@ import { ActorListComponent } from './components/actor/actor-list/actor-list.com
 import { ActorPostFormComponent } from './components/actor/actor-post-form/actor-post-form.component';
 import { ActorDetailComponent } from './components/actor/actor-detail/actor-detail.component';
 import { ActorPutFormComponent } from './components/actor/actor-put-form/actor-put-form.component';
+import { SeguridadComponent } from './seguridad/seguridad/seguridad.component';
+import { LoginComponent } from './seguridad/components/login/login.component';
+import { RegistroComponent } from './seguridad/components/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { ActorPutFormComponent } from './components/actor/actor-put-form/actor-p
     ActorPostFormComponent,
     ActorDetailComponent,
     ActorPutFormComponent,
+    SeguridadComponent,
+    LoginComponent,
+    RegistroComponent,
     
   ],
   imports: [

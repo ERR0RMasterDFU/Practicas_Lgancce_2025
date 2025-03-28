@@ -1,3 +1,7 @@
 .barraAncho{
     width: 350px;
 }
+
+.grosorTexto{
+    font-weight: 600;
+}

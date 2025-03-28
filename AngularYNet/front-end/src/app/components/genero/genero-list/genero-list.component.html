@@ -1,9 +1,13 @@
 <div class="margenesPantalla">
     
     <div class="w-100 mb-5">
-        <a class="btn btn-success py-2 mb-1 d-flex justify-content-center align-items-center" [routerLink]="['/genero/add']">
-            <i class="bi bi-sign-intersection-fill"></i>&nbsp;&nbsp;&nbsp;AÑADIR GÉNERO
-        </a>
+        <app-autorizado [rol]="'admin'">
+            <ng-container autorizado>
+                <a class="btn btn-success py-2 mb-1 d-flex justify-content-center align-items-center" [routerLink]="['/genero/add']">
+                    <i class="bi bi-sign-intersection-fill"></i>&nbsp;&nbsp;&nbsp;AÑADIR GÉNERO
+                </a>
+            </ng-container>
+        </app-autorizado>
         
         <mat-paginator class="border border-black border-1 mt-4" [pageSizeOptions]="[16, 24, 36, 48]" 
             showFirstLastButtons="true" [length]="cantidadTotalElementos" 
