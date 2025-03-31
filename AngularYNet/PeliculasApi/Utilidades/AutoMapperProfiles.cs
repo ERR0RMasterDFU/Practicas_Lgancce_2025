@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using PeliculasApi.DTOs;
 using PeliculasApi.DTOs.Actor;
+using PeliculasApi.DTOs.Usuario;
 using PeliculasApi.Modelos;
 
 namespace PeliculasApi.Utilidades
@@ -17,6 +19,9 @@ namespace PeliculasApi.Utilidades
             CreateMap<Actor, GetActorDtoSimple>().ReverseMap();
             CreateMap<Actor, GetActorDtoCompleto>().ReverseMap();
             CreateMap<GetActorDtoCompleto, Actor>().ReverseMap();
+
+            // USUARIO
+            CreateMap<IdentityUser, GetUsuarioDto>();
 
 
             /* 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { GeneroListComponent } from './components/genero/genero-list/genero-list.component';
 import { GeneroPostFormComponent } from './components/genero/genero-post-form/genero-post-form.component';
 import { GeneroDetailsComponent } from './components/genero/genero-details/genero-details.component';
@@ -11,16 +12,18 @@ import { ActorPutFormComponent } from './components/actor/actor-put-form/actor-p
 import { esAdminGuard } from './seguridad/es-admin.guard';
 import { LoginComponent } from './seguridad/components/login/login.component';
 import { RegistroComponent } from './seguridad/components/registro/registro.component';
+import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-list.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {path: 'generos', component: GeneroListComponent},
   {path: 'genero/:id', component: GeneroDetailsComponent},
   {path: 'genero/add', component: GeneroPostFormComponent},
   {path: 'genero/edit/:id', component: GeneroPutFormComponent},
-  {path: 'actores', component: ActorListComponent, canActivate: [esAdminGuard]},
-  {path: 'actor/:id', component: ActorDetailComponent, canActivate: [esAdminGuard]},
+  {path: 'actores', component: ActorListComponent},
+  {path: 'actor/:id', component: ActorDetailComponent},
   {path: 'actor/add', component: ActorPostFormComponent, canActivate: [esAdminGuard]},
   {path: 'actor/edit/:id', component: ActorPutFormComponent, canActivate: [esAdminGuard]},
+  {path: 'usuarios', component: UsuarioListComponent, canActivate: [esAdminGuard]},
   {path: '', redirectTo: 'generos', pathMatch: 'full'},
 
   // SEGURIDAD 

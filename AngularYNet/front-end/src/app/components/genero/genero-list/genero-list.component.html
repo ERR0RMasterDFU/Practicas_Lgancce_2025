@@ -22,7 +22,12 @@
                 <a [routerLink]="['/genero', genero.id]">
                     <div class="card-body">
                         <h5 class="card-title text-center m-0 puntosSuspensivos mt-2">{{ genero.nombre.toUpperCase() }}</h5>
-                        <div class="d-flex w-100 justify-content-between mt-3">
+                    </div>
+                </a>
+
+                @if(seguridadService.obtenerRol() == 'admin') {
+                    <div class="card-body">
+                        <div class="d-flex w-100 justify-content-between">
                             <a class="btn btn-secondary w-50 me-2 mt-1 text-light" [routerLink]="['/genero/edit', genero.id]">
                                 <i class="bi bi-gear-fill"></i>&nbsp;&nbsp;EDITAR
                             </a>
@@ -30,12 +35,13 @@
                             data-bs-target="#deleteModal" (click)="extraerDatosAModal(genero.id, genero.nombre, $event)">
                                 <i class="bi bi-trash-fill"></i>&nbsp;&nbsp;ELIMINAR
                             </a-->
-                            <a class="btn btn-danger w-50 mt-1 text-center text-light" (click)="eliminarGenero(genero.id)">
+                            <button class="btn btn-danger w-50 mt-1 text-center text-light" (click)="mostrarModalEliminar(genero)">
                                 <i class="bi bi-trash-fill"></i>&nbsp;&nbsp;ELIMINAR
-                            </a>
+                            </button>
                         </div>
                     </div>
-                </a>
+                }
+
             </div>
         }
     </div>

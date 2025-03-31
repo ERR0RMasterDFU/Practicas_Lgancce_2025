@@ -10,11 +10,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using PeliculasApi.DTOs.Actor;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace PeliculasApi.Controllers
 {
     [Route("api/actor")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ActorController: ControllerBase
     {
 
@@ -32,6 +35,7 @@ namespace PeliculasApi.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<List<GetActorDtoSimple>>> GetAll([FromQuery] PaginacionDto paginacion)
         {
             // PAGINACIÓN: 
@@ -44,6 +48,7 @@ namespace PeliculasApi.Controllers
 
 
         [HttpGet("{id:long}")]
+        [AllowAnonymous]
         public async Task<ActionResult<GetActorDtoCompleto>> GetById(long id)
         {
             var actor = await context.Actor.FindAsync(id);
@@ -56,6 +61,7 @@ namespace PeliculasApi.Controllers
 
 
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
         public async Task<ActionResult<GetActorDtoCompleto>> Save([FromForm] EditActorRequest datosActor)
         {
             var nuevoActor = mapper.Map<Actor>(datosActor);
@@ -75,6 +81,7 @@ namespace PeliculasApi.Controllers
 
         
         [HttpPut("{id:long}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
         public async Task<ActionResult<Actor>> Edit([FromForm] EditActorRequest datosActor, [FromRoute] long id)
         {
 
@@ -105,6 +112,7 @@ namespace PeliculasApi.Controllers
 
 
         [HttpDelete("{id:long}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
         public async Task<ActionResult> Delete([FromRoute] long id)
         {
             var actor = await context.Actor.FindAsync(id);

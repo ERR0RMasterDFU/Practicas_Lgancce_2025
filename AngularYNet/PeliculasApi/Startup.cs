@@ -103,6 +103,11 @@ namespace PeliculasApi
                     ClockSkew = TimeSpan.Zero
                 });
 
+            services.AddAuthorization(opciones =>
+            {
+                opciones.AddPolicy("EsAdmin", policy => policy.RequireClaim("role", "admin"));
+            });
+
 
 
             // SWAGGER

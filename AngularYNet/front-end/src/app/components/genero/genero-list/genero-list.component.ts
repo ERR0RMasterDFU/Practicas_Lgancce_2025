@@ -5,6 +5,8 @@ import { HttpResponse } from '@angular/common/http';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SeguridadService } from '../../../seguridad/seguridad.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-genero-list',
@@ -26,7 +28,8 @@ export class GeneroListComponent {
   elementosAMostrar = 16;
 
   
-  constructor(private generoService: GeneroService, private router: Router, private modalService: NgbModal  ) { }
+  constructor(private generoService: GeneroService, private router: Router, 
+    public seguridadService: SeguridadService, private modalService: NgbModal) { }
 
 
   ngOnInit(): void {
@@ -53,12 +56,42 @@ export class GeneroListComponent {
     this.cargarGeneros(this.paginaActual, this.elementosAMostrar);
   }
 
-  eliminarGenero(id: number): void {
+  mostrarModalEliminar(genero: GeneroResponse) {
+    Swal.fire({
+      title: `<i style="color: #d33;" class="bi bi-exclamation-triangle-fill"></i>&nbsp;ELIMINAR&nbsp;<i style="color: #d33;" class="bi bi-exclamation-triangle-fill"></i>`, 
+      html: ` <p class="m-0">Se eliminará el género:</p>
+              <h4 class="my-2" style="color: #d33;"><strong>${genero.nombre.toUpperCase()}</strong></h4>
+              <p class="m-0">¿Desea continuar?</p>
+            `,
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',  
+      confirmButtonText: 'ELIMINAR',  
+      confirmButtonColor: '#d33',
+      customClass: { 
+        confirmButton: 'btn btn-danger',
+        cancelButton: 'btn btn-secondary',
+        title: 'custom-title'
+      }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Ejecutar el método cuando se confirma la eliminación
+          this.eliminarGenero(genero.id, genero.nombre);
+        }
+      });
+  }
+
+  eliminarGenero(id: number, nombre: string): void {
     console.log(id);
     this.generoService.eliminarGenero(id).subscribe(
       (resp) => {
-        //modal.close();  // Cerrar el modal después de la eliminación
-        this.router.navigate(["/generos"]);
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "¡ELIMINADO!",
+          showConfirmButton: false,
+          timer: 1000
+        });
+        this.cargarGeneros(this.paginaActual, this.elementosAMostrar);
       },
       (error) => {
         console.error('Error al eliminar género:', error);

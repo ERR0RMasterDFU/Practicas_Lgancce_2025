@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AutenticationResponse, CredencialesUsuario } from './seguridad.interfaces';
+import { AutenticationResponse, CredencialesUsuario, usuarioResponse } from './seguridad.interfaces';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -14,6 +14,26 @@ export class SeguridadService {
   apiUrl = environment.apiBaseUrl + 'cuentas'
   private readonly tokenKey = 'token';
   private readonly tokenExpiracionKey = 'token_espiracion';
+  private readonly campoRole = 'role';
+
+  obtenerUsuarios(pagina: number, recordsPorPagina: number): Observable<any>{
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append('recordsPorPagina', recordsPorPagina.toString());
+    return this.httpClient.get<usuarioResponse[]>(`${this.apiUrl}/listadoUsuarios`,
+      {observe: 'response', params}
+    )
+  }
+
+  addAdmin(usuarioId: number) {
+    const headers = new HttpHeaders('Content-Type: application/json');
+    return this.httpClient.post(`${this.apiUrl}/addAdmin`, JSON.stringify(usuarioId), {headers});
+  }
+
+  removeAdmin(usuarioId: number) {
+    const headers = new HttpHeaders('Content-Type: application/json');
+    return this.httpClient.post(`${this.apiUrl}/removeAdmin`, JSON.stringify(usuarioId), {headers});
+  }
 
   estaLogueado(): boolean{
 
@@ -40,7 +60,7 @@ export class SeguridadService {
   }
 
   obtenerRol(): string {
-    return "";
+    return this.obtenerCampoJWT(this.campoRole);
   }
 
   obtenerCampoJWT(campo: string): string{

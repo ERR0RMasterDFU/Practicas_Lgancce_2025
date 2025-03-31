@@ -8,6 +8,11 @@ export interface AutenticationResponse {
     expiracion: Date;
 }
 
+export interface usuarioResponse {
+    id: number;
+    email: string;
+}
+
 export interface EditActorRequest {
     nombre: string
     biografia: string

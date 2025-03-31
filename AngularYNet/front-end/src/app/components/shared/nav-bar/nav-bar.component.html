@@ -6,9 +6,16 @@
         <a class="nav-link text-white" aria-current="page" [routerLink]="['generos']">
           <h5 class="mb-0">GÉNEROS</h5>
         </a>
-        <a class="nav-link text-white" aria-current="page" [routerLink]="['actores']">
-          <h5 class="mb-0">ACTORES</h5>
-        </a>
+        @if(seguridadService.estaLogueado()){
+          <a class="nav-link text-white" aria-current="page" [routerLink]="['actores']">
+            <h5 class="mb-0">ACTORES</h5>
+          </a>
+          @if(seguridadService.obtenerRol() == 'admin'){
+            <a class="nav-link text-white" aria-current="page" [routerLink]="['usuarios']">
+              <h5 class="mb-0">USUARIOS</h5>
+            </a>
+          }
+        }
       </li>
     </ul>
     <form class="d-flex" role="search">

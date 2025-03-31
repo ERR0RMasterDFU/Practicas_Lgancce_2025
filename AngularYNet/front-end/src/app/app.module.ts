@@ -24,6 +24,8 @@ import { ActorPutFormComponent } from './components/actor/actor-put-form/actor-p
 import { SeguridadComponent } from './seguridad/seguridad/seguridad.component';
 import { LoginComponent } from './seguridad/components/login/login.component';
 import { RegistroComponent } from './seguridad/components/registro/registro.component';
+import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-list.component';
+//import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { RegistroComponent } from './seguridad/components/registro/registro.comp
     SeguridadComponent,
     LoginComponent,
     RegistroComponent,
+    UsuarioListComponent,
     
   ],
   imports: [
@@ -53,7 +56,8 @@ import { RegistroComponent } from './seguridad/components/registro/registro.comp
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    //SweetAlert2Module.forRoot(),
   ],
   providers: [
     provideHttpClient()

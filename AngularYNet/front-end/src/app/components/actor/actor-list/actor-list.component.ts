@@ -4,6 +4,7 @@ import { ActorService } from '../../../services/actor.service';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { PageEvent } from '@angular/material/paginator';
+import { SeguridadService } from '../../../seguridad/seguridad.service';
 
 @Component({
   selector: 'app-actor-list',
@@ -19,7 +20,7 @@ export class ActorListComponent {
   elementosAMostrar = 16;
 
   
-  constructor(private actorService: ActorService, private router: Router) { }
+  constructor(private actorService: ActorService, public seguridadService: SeguridadService, private router: Router) { }
 
 
   ngOnInit(): void {
